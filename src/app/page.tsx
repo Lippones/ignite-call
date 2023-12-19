@@ -3,7 +3,7 @@ import { Heading, Text } from '@ignite-ui/react'
 import { Container, Hero, Preview } from './styles'
 import previewImage from '../assets/app-preview.png'
 import Image from 'next/image'
-import { ClaimUsersnameForm } from '@/components/home/claim-usersname-form'
+import { ClaimUsernameForm } from '@/components/home/claim-username-form'
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           no seu tempo livre.
         </Text>
 
-        <ClaimUsersnameForm />
+        <ClaimUsernameForm />
       </Hero>
 
       <Preview>
