@@ -1,8 +1,10 @@
+import { PrismaAdapter } from '@/lib/auth/prisma-adapter'
 import NextAuth from 'next-auth'
-import type { AuthOptions } from 'next-auth'
-import GoogleProvider from 'next-auth/providers/google'
+import type { NextAuthOptions } from 'next-auth'
+import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? '',
@@ -16,6 +18,15 @@ export const authOptions: AuthOptions = {
             'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
         },
       },
+      profile: (profile: GoogleProfile) => {
+        return {
+          name: profile.name,
+          id: profile.sub,
+          avatar_url: profile.picture,
+          email: profile.email,
+          username: '',
+        }
+      },
     }),
   ],
   callbacks: {
@@ -27,6 +38,12 @@ export const authOptions: AuthOptions = {
       }
 
       return true
+    },
+    async session({ session, user }) {
+      return {
+        ...session,
+        user,
+      }
     },
   },
 }
