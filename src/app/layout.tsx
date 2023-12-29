@@ -1,4 +1,6 @@
 import { GlobalThemeProvider } from '@/components/global-theme-provider'
+import { NextAuthSessionProvider } from '@/components/next-auth-session-provider'
+import { ReactQueryProvider } from '@/components/react-query-provider'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 
@@ -17,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <GlobalThemeProvider>{children}</GlobalThemeProvider>
+        <GlobalThemeProvider>
+          <NextAuthSessionProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </NextAuthSessionProvider>
+        </GlobalThemeProvider>
       </body>
     </html>
   )
