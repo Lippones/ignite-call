@@ -10,7 +10,6 @@ import { useEffect } from 'react'
 import { useMutation } from 'react-query'
 import { api } from '@/lib/axios'
 import { AxiosError } from 'axios'
-import router from 'next/router'
 
 const registerFormSchema = z.object({
   username: z
