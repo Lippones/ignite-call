@@ -22,7 +22,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { getWeekDays } from '@/utils/get-week-days'
 import { convertTimeStringInMinutes } from '@/utils/convert-time-string-in-minutes'
-import { useSession } from 'next-auth/react'
 import { api } from '@/lib/axios'
 
 const timeIntervalsFormSchema = z.object({
