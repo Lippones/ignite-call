@@ -3,6 +3,7 @@ import { NextAuthSessionProvider } from '@/components/next-auth-session-provider
 import { ReactQueryProvider } from '@/components/react-query-provider'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import '@/lib/dayjs'
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 

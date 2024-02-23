@@ -1,8 +1,8 @@
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../../auth/[...nextauth]/route'
 import { ZodError, z } from 'zod'
 import { fromZodError } from 'zod-validation-error'
 import { prisma } from '@/lib/prisma'
+import { authOptions } from '@/lib/auth/auth-options'
 
 const timeIntervalsBodySchema = z.object({
   intervals: z.array(
